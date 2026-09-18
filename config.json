@@ -6,7 +6,7 @@
   "sync": {
     "enabled": true,
     "interval_minutes": 30,
-    "mode": "watchlist",
+    "mode": "api",
     "keywords_ar": [
       "ملابس أطفال",
       "فستان بناتي",
