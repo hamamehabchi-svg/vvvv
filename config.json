@@ -1,0 +1,28 @@
+{
+  "margin_pct": 40,
+  "currency": "SAR",
+  "usd_to_sar": 3.75,
+  "fixed_fee_sar": 15,
+  "sync": {
+    "enabled": true,
+    "interval_minutes": 30,
+    "mode": "watchlist",
+    "keywords_ar": [
+      "ملابس أطفال",
+      "فستان بناتي",
+      "طقم أولادي",
+      "بيجاما أطفال",
+      "أحذية أطفال",
+      "ملابس مواليد",
+      "جوارب أطفال",
+      "جاكيت أطفال"
+    ],
+    "auto_publish": true
+  },
+  "api": {
+    "provider": "cj_dropshipping",
+    "api_key": "PUT_YOUR_API_KEY_HERE",
+    "endpoint_products": "https://developers.cjdropshipping.com/api2.0/v1/product/list",
+    "note": "سجّل مجانًا في developers.cjdropshipping.com — عند وضع المفتاح وضبط mode=api تصبح المزامنة تلقائية 100%"
+  }
+}

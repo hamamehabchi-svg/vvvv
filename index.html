@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>صغاري VIP | ملابس أطفال عالمية</title>
+<style>
+:root{--gold:#c9a24b;--dark:#141414;--cream:#faf7f2;--pink:#f6e7ea}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Arial,sans-serif;background:var(--cream);color:var(--dark)}
+.topbar{background:var(--dark);color:#fff;text-align:center;padding:8px;font-size:13px;letter-spacing:.5px}
+.topbar b{color:var(--gold)}
+header{display:flex;justify-content:space-between;align-items:center;padding:16px 6%;background:#fff;position:sticky;top:0;z-index:50;box-shadow:0 1px 8px rgba(0,0,0,.06)}
+.logo{font-size:26px;font-weight:800}
+.logo span{color:var(--gold)}
+nav a{margin:0 14px;text-decoration:none;color:var(--dark);font-size:15px;font-weight:600}
+nav a:hover{color:var(--gold)}
+.cart-btn{background:var(--dark);color:#fff;border:none;padding:10px 22px;border-radius:30px;font-size:14px;cursor:pointer;font-family:inherit}
+.cart-btn:hover{background:var(--gold)}
+.hero{display:flex;align-items:center;justify-content:space-between;padding:60px 6%;gap:40px;flex-wrap:wrap}
+.hero-txt{max-width:560px}
+.hero-txt .tag{color:var(--gold);font-weight:700;font-size:14px;letter-spacing:2px}
+.hero-txt h1{font-size:46px;line-height:1.25;margin:14px 0}
+.hero-txt p{color:#555;font-size:17px;line-height:1.9;margin-bottom:24px}
+.btn{display:inline-block;padding:14px 36px;border-radius:30px;text-decoration:none;font-weight:700;font-size:15px}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-dark{background:var(--dark);color:#fff;margin-inline-start:10px}
+.hero-art{flex:1;min-width:280px;max-width:480px;background:linear-gradient(135deg,#f3d9a4,#f6c6cf);border-radius:24px;height:340px;display:flex;align-items:center;justify-content:center;font-size:100px}
+.badges{display:flex;gap:16px;padding:0 6% 40px;flex-wrap:wrap}
+.badge{background:#fff;border-radius:14px;padding:14px 20px;font-size:14px;font-weight:600;box-shadow:0 2px 10px rgba(0,0,0,.05);flex:1;min-width:180px;text-align:center}
+.badge b{color:var(--gold)}
+h2.sec-title{text-align:center;font-size:30px;margin:50px 0 8px}
+.sec-sub{text-align:center;color:#777;margin-bottom:32px}
+.cats{display:flex;gap:12px;padding:0 6%;flex-wrap:wrap;justify-content:center;margin-bottom:20px}
+.cat{background:#fff;border:1px solid #eee;border-radius:30px;padding:10px 22px;cursor:pointer;font-size:14px;font-weight:600;font-family:inherit}
+.cat.on{background:var(--dark);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px;padding:0 6% 60px}
+.p-card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 3px 14px rgba(0,0,0,.06);transition:.3s}
+.p-card:hover{transform:translateY(-6px)}
+.p-img{height:230px;display:flex;align-items:center;justify-content:center;font-size:72px}
+.p-body{padding:16px}
+.p-cat{font-size:12px;color:var(--gold);font-weight:700}
+.p-name{font-size:16px;font-weight:700;margin:6px 0}
+.p-old{color:#999;text-decoration:line-through;font-size:13px}
+.p-price{color:var(--dark);font-size:19px;font-weight:800}
+.p-add{width:100%;margin-top:12px;background:var(--dark);color:#fff;border:none;padding:12px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit}
+.p-add:hover{background:var(--gold)}
+.vip{background:var(--dark);color:#fff;padding:60px 6%;margin:20px 0}
+.vip h2{font-size:30px;margin-bottom:24px;text-align:center}
+.vip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.vip-item{border:1px solid #333;border-radius:14px;padding:20px;font-size:14px;line-height:1.8}
+.vip-item b{color:var(--gold);display:block;margin-bottom:6px;font-size:15px}
+footer{background:#0d0d0d;color:#bbb;padding:40px 6%;text-align:center;font-size:13px}
+footer .links{margin-bottom:14px}
+footer a{color:var(--gold);margin:0 10px;text-decoration:none}
+.cart-panel{position:fixed;inset-inline-start:0;top:0;height:100%;width:340px;max-width:90vw;background:#fff;box-shadow:4px 0 20px rgba(0,0,0,.15);z-index:100;transform:translateX(100%);transition:.35s;display:flex;flex-direction:column}
+.cart-panel.open{transform:none}
+.cart-head{display:flex;justify-content:space-between;align-items:center;padding:18px;border-bottom:1px solid #eee}
+.cart-items{flex:1;overflow:auto;padding:12px 18px}
+.c-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #f3f3f3;font-size:14px}
+.c-item button{background:none;border:none;color:#c00;cursor:pointer;font-size:16px}
+.cart-foot{padding:18px;border-top:1px solid #eee}
+.total{display:flex;justify-content:space-between;font-weight:800;font-size:17px;margin-bottom:12px}
+.checkout{width:100%;background:var(--gold);color:#fff;border:none;padding:14px;border-radius:12px;font-size:15px;font-weight:800;cursor:pointer;font-family:inherit}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:99;opacity:0;pointer-events:none;transition:.3s}
+.overlay.show{opacity:1;pointer-events:all}
+.empty{text-align:center;color:#999;padding:40px 0;font-size:14px}
+.toast{position:fixed;bottom:24px;inset-inline-start:50%;transform:translateX(50%);background:var(--dark);color:#fff;padding:12px 28px;border-radius:30px;font-size:14px;z-index:200;opacity:0;transition:.3s;pointer-events:none}
+.toast.show{opacity:1}
+@media(max-width:700px){.hero-txt h1{font-size:32px}nav{display:none}}
+</style>
+</head>
+<body>
+<div style="background:var(--gold);color:#fff;text-align:center;padding:6px;font-size:12px">المزامنة الحيّة مفعّلة — <span id="syncDate"></span></div>
+<div class="topbar">شحن مجاني للطلبات فوق <b>300 ر.س</b> · توصيل من 7 إلى 12 يومًا · إرجاع مجاني خلال 14 يومًا</div>
+<header>
+  <div class="logo">صغاري <span>VIP</span></div>
+  <nav>
+    <a href="#shop">تسوق</a><a href="#cats">الأقسام</a><a href="#vip">عضوية VIP</a><a href="#about">من نحن</a>
+  </nav>
+  <button class="cart-btn" onclick="toggleCart(true)">السلة (<span id="cartCount">0</span>)</button>
+</header>
+
+<section class="hero" id="about">
+  <div class="hero-txt">
+    <div class="tag">أزياء أطفال عالمية · جودة معتمدة</div>
+    <h1>أناقة صغيرك،<br>تستحق المعايير العالمية</h1>
+    <p>قطن عضوي معتمد، خياطة أوروبية، وتصاميم تناسب كل مناسبة — من لحظة الولادة حتى 12 سنة. منتجات مختارة بعناية من أفضل المصانع العالمية وتوصل لباب منزلك.</p>
+    <a href="#shop" class="btn btn-gold">تسوق الآن</a>
+    <a href="#vip" class="btn btn-dark">اكتشف عضوية VIP</a>
+  </div>
+  <div class="hero-art">🧸</div>
+</section>
+
+<div class="badges">
+  <div class="badge">قطن عضوي <b>OEKO-TEX</b></div>
+  <div class="badge">شحن سريع <b>7–12 يوم</b></div>
+  <div class="badge">دفع آمن <b>100%</b></div>
+  <div class="badge">إرجاع مجاني <b>14 يوم</b></div>
+  <div class="badge">دعم واتساب <b>24/7</b></div>
+</div>
+
+<h2 class="sec-title" id="cats">تسوق حسب القسم</h2>
+<p class="sec-sub">اختَر القسم لعرض المنتجات المناسبة</p>
+<div class="cats" id="catBar"></div>
+
+<h2 class="sec-title" id="shop">منتجات مختارة لك</h2>
+<p class="sec-sub">أسعار شاملة الشحن والضريبة</p>
+<div class="grid" id="grid"></div>
+
+<section class="vip" id="vip">
+  <h2>لماذا صغاري VIP؟</h2>
+  <div class="vip-grid">
+    <div class="vip-item"><b>جودة معتمدة</b>كل قطعة تخضع لفحص جودة ثلاثي المراحل قبل الشحن، مع شهادات أمان أقمشة دولية.</div>
+    <div class="vip-item"><b>مزامنة لحظية</b>تحديث تلقائي للمخزون والأسعار من الموردين مباشرة — لن يُلغَ طلبك أبدًا بسبب نفاد.</div>
+    <div class="vip-item"><b>عضوية العائلة</b>أنشئي حساب طفلك: نرشّح المقاس والستايل المناسبين لعمره في كل موسم.</div>
+    <div class="vip-item"><b>شحن VIP</b>تغليف هدايا فاخر مجاني مع كل طلب، وأولوية في الشحن لأعضاء العضوية.</div>
+    <div class="vip-item"><b>نقاط ومكافآت</b>اكسبي نقطة عن كل ريال، واستبدليها بخصومات وشحن مجاني دائم.</div>
+    <div class="vip-item"><b>دفع مرن</b>مدى، Apple Pay، Visa، PayPal، والدفع عند الاستلام داخل المدن الرئيسية.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="links"><a href="#">سياسة الإرجاع</a><a href="#">الشحن والتوصيل</a><a href="#">اتصل بنا</a><a href="#">الأسئلة الشائعة</a></div>
+  <div>صغاري VIP © 2026 — جميع الحقوق محفوظة · متجر تجريبي</div>
+</footer>
+
+<div class="overlay" id="overlay" onclick="toggleCart(false)"></div>
+<aside class="cart-panel" id="cartPanel">
+  <div class="cart-head"><b style="font-size:17px">سلة التسوق</b><button onclick="toggleCart(false)" style="background:none;border:none;font-size:20px;cursor:pointer">✕</button></div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-foot">
+    <div class="total"><span>الإجمالي</span><span id="cartTotal">0 ر.س</span></div>
+    <button class="checkout" onclick="checkout()">إتمام الطلب</button>
+  </div>
+</aside>
+<div class="toast" id="toast">أُضيف المنتج إلى السلة ✓</div>
+
+<script src="products.js"></script>
+<script>
+const PRODUCTS = (typeof PRODUCTS_EXTERNAL !== 'undefined') ? PRODUCTS_EXTERNAL : [[
+{id:1,cat:'بناتي',name:'فستان صيفي وردي بنقشة فراشات',emoji:'👗',bg:'linear-gradient(135deg,#f9d7e0,#fbe9ee)',price:89,old:129},
+{id:2,cat:'بناتي',name:'تنورة تول حفلات مع فيونكة',emoji:'🎀',bg:'linear-gradient(135deg,#e8d5f2,#f5ecfb)',price:119,old:169},
+{id:3,cat:'أولادي',name:'طقم قطن رياضي 3 قطع',emoji:'👕',bg:'linear-gradient(135deg,#d5e3f5,#e9f1fb)',price:99,old:145},
+{id:4,cat:'أولادي',name:'جاكيت جينز عصري',emoji:'🧥',bg:'linear-gradient(135deg,#cfe0ea,#e6eff5)',price:139,old:199},
+{id:5,cat:'حديثو الولادة',name:'أطقم بودي قطن عضوي (5 قطع)',emoji:'🍼',bg:'linear-gradient(135deg,#fdeedd,#fdf4e7)',price:129,old:189},
+{id:6,cat:'حديثو الولادة',name:'بطانية قماش محشوة ناعمة',emoji:'🧸',bg:'linear-gradient(135deg,#f2e6d8,#faf3ea)',price:75,old:110},
+{id:7,cat:'أحذية',name:'سنيكرز رياضي بإضاءة LED',emoji:'👟',bg:'linear-gradient(135deg,#ddeedd,#eef7ee)',price:95,old:140},
+{id:8,cat:'أحذية',name:'بوت شتوي دافئ بطبقة فرو',emoji:'🥾',bg:'linear-gradient(135deg,#e3ddd3,#f4f0e9)',price:110,old:160},
+{id:9,cat:'ملابس نوم',name:'بيجاما فلانيل شتوية (زوجين)',emoji:'🌙',bg:'linear-gradient(135deg,#d9d7f0,#eceafb)',price:85,old:125},
+{id:10,cat:'إكسسوارات',name:'طقم قبعات وجوارب قطنية (8 قطع)',emoji:'🧦',bg:'linear-gradient(135deg,#f5d9d0,#fcede8)',price:49,old:79},
+{id:11,cat:'ملابس نوم',name:'كيس نوم أطفال بغطاء رأس',emoji:'⭐',bg:'linear-gradient(135deg,#fff3c9,#fffae8)',price:99,old:149},
+{id:12,cat:'إكسسوارات',name:'حقيبة ظهر مدرسية مقاومة للماء',emoji:'🎒',bg:'linear-gradient(135deg,#d0e8f5,#e8f4fb)',price:79,old:115},
+];
+const CATS=['الكل',...new Set(PRODUCTS.map(p=>p.cat))];
+let active='الكل',cart=[];
+const catBar=document.getElementById('catBar');
+CATS.forEach(c=>{
+  const b=document.createElement('button');b.className='cat'+(c==='الكل'?' on':'');b.textContent=c;
+  b.onclick=()=>{active=c;document.querySelectorAll('.cat').forEach(x=>x.classList.remove('on'));b.classList.add('on');render();};
+  catBar.appendChild(b);
+});
+function render(){
+  const g=document.getElementById('grid');g.innerHTML='';
+  PRODUCTS.filter(p=>active==='الكل'||p.cat===active).forEach(p=>{
+    g.insertAdjacentHTML('beforeend',
+    `<div class="p-card"><div class="p-img" style="background:${p.bg}">${p.emoji}</div>
+     <div class="p-body"><div class="p-cat">${p.cat} ${p.isNew?'<span style="background:var(--gold);color:#fff;font-size:11px;padding:2px 10px;border-radius:20px;margin-inline-start:6px">جديد ✦</span>':''}</div><div style="font-size:11px;color:#999">المصدر: ${p.supplier.replace("https://","").split("/")[0]}</div><div class="p-name">${p.name}</div>
+     <div><span class="p-old">${p.old} ر.س</span> <span class="p-price">${p.price} ر.س</span></div>
+     <button class="p-add" onclick="add(${p.id})">أضف إلى السلة</button></div></div>`);
+  });
+}
+function add(id){const p=PRODUCTS.find(x=>x.id===id);const it=cart.find(x=>x.id===id);
+  if(it)it.q++;else cart.push({...p,q:1});update();toast('أُضيف "'+p.name+'" إلى السلة ✓');}
+function removeItem(id){cart=cart.filter(x=>x.id!==id);update();}
+function update(){
+  const n=cart.reduce((s,x)=>s+x.q,0),t=cart.reduce((s,x)=>s+x.q*x.price,0);
+  document.getElementById('cartCount').textContent=n;
+  document.getElementById('cartTotal').textContent=t+' ر.س';
+  const box=document.getElementById('cartItems');
+  box.innerHTML=cart.length?cart.map(x=>
+    `<div class="c-item"><span>${x.emoji} ${x.name} ×${x.q}</span><span>${x.q*x.price} ر.س <button onclick="removeItem(${x.id})">✕</button></span></div>`).join('')
+    :'<div class="empty">سلتك فارغة — ابدأ التسوق 🛍️</div>';
+}
+function toggleCart(open){document.getElementById('cartPanel').classList.toggle('open',open);
+  document.getElementById('overlay').classList.toggle('show',open);}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),1800);}
+function checkout(){
+  if(!cart.length)return toast('السلة فارغة');
+  const t=cart.reduce((s,x)=>s+x.q*x.price,0);
+  toast('شكرًا لك! إجمالي طلبك '+t+' ر.س — (وضع تجريبي)');
+}
+(function(){var si=window.SYNC_INFO||{};
+ document.getElementById('syncDate').textContent = si.lastSync
+  ? 'آخر مزامنة: '+si.lastSync+' · '+si.total+' منتجًا · '+(si.newToday||0)+' جديد اليوم · هامش '+si.margin+'%'
+  : 'بانتظار أول مزامنة — شغّل python sync.py';})();
+render();update();
+</script>
+</body>
+</html>
